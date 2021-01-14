@@ -19,8 +19,19 @@ public class Result {
     //kan dit uibreiden voor mogelijk algoritmiek met een streak, bijv. kan nog wel meer ideeën verzinnen.
     public int calcScore(long time, boolean answer){
         if(answer){
-            int percent = (int) (1 - (time/60000));
-            int points = basepoints + (100 * percent);
+            int points = 0;
+            if(0 > time){
+                points = 0;
+            }
+            else if(time > 60000){
+                time = 60000;
+                int percent = (int) (1 - (time/60000));
+                points = basepoints + (100 * percent);
+            }
+            else if(time <= 60000){
+                int percent = (int) (1 - (time/60000));
+                points = basepoints + (100 * percent);
+            }
 
             return points;
         }
