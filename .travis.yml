@@ -1,6 +1,5 @@
 language: java
-install:
-  - mvn -N io.takari:maven:wrapper
-  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+install: true
 script:
-  -bash <(curl -s https://codecov.io/bash)
+  - ./mvnw clean install
+  - bash <(curl -s https://codecov.io/bash)
