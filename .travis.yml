@@ -9,9 +9,6 @@ after_success:
 
 
 deploy:
-  -
-    on:
-      branch: master
-    provider: bintray
-    skip_cleanup: true;
-    file: target/bin/bintray.json
+  provider: heroku
+  api_key: 32245718-48ba-4a4c-88cd-df01847e4ed0
+    app: lkjaffl
