@@ -14,7 +14,10 @@
     <description>Whiskyapp used for rating whisky</description>
 
     <properties>
+        <codeVersion>11</codeVersion>
         <java.version>11</java.version>
+        <mavenVersion>3.8.0</mavenVersion>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     </properties>
 
@@ -62,49 +65,66 @@
         </dependency>
 
         <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.0.3</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.0.3</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.1.0</version>
+            <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
-
-
-
+            <!-- Java compiler - Java version 11 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${mavenVersion}</version>
                 <configuration>
-                    <release>11</release>
+                    <source>${codeVersion}</source>
+                    <target>${codeVersion}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>1.0.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.0.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- Java Code Coverage with JaCoCo plugin for maven -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.4</version>
+                <version>0.8.3</version>
                 <executions>
                     <execution>
+                        <id>default-prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>test</phase>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
