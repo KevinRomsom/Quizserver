@@ -4,6 +4,7 @@ public class Player {
     private int id;
     private String name;
 
+    //regel comment om build te triggeren
     public Player(int id, String name){
         this.id = id;
         this.name = name;
