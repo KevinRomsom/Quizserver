@@ -6,6 +6,19 @@ import java.util.List;
 public class Question {
     private int questionid;
     private String question;
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+
+    public String getCorrectanswer() {
+        return correctanswer;
+    }
+
     private List<String> answers = new ArrayList<String>();
     private String correctanswer;
 

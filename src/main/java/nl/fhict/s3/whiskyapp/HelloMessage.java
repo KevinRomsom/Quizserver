@@ -1,20 +1,20 @@
 package nl.fhict.s3.whiskyapp;
 
 public class HelloMessage {
-    private String name;
+    private String userid;
 
     public HelloMessage() {
     }
 
-    public HelloMessage(String name) {
-        this.name = name;
+    public HelloMessage(String id) {
+        this.userid = id;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return userid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.userid = id;
     }
 }

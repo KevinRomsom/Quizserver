@@ -4,3 +4,11 @@ install:
   - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  -
+    on:
+      branch: master
+    provider: bintray
+    skip_cleanup: true;
+    file: target/bin/bintray.json
